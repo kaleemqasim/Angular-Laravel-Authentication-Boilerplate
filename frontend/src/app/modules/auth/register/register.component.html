@@ -1,0 +1,57 @@
+
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+    <mat-stepper>
+        <mat-step label="Basic Information" state="phone">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput formControlName="name">
+            </mat-form-field>
+            <mat-error *ngIf="registerForm.hasError('required')">
+                Password is <strong>required</strong>
+            </mat-error>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email"
+                placeholder="Ex. pat@example.com">
+            </mat-form-field>
+            <mat-error *ngIf="registerForm.hasError('email') && !registerForm.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="registerForm.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+            <!-- <mat-error *ngIf="errorMessage('email', 'email')">Email is required</mat-error>
+            <mat-error *ngIf="errorMessage('email', 'required')">Email is required</mat-error> -->
+          <div>
+            <button type="button" class="btn btn-primary" matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step label="Credentials" state="chat">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+          </mat-form-field>
+          <mat-error *ngIf="registerForm.hasError('required')">
+              Password is <strong>required</strong>
+          </mat-error>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" matInput formControlName="confirmPassword">
+          </mat-form-field>
+          <mat-error *ngIf="registerForm.hasError('required')">
+              Confirm password is <strong>required</strong>
+          </mat-error>
+
+          <div>
+            <button class="btn btn-secondary" type="button" mat-button matStepperPrevious>Back</button>
+            <button class="btn btn-primary" type="button" mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step label="Step 3">
+            <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary">Complete Registration</button>
+        </mat-step>
+      </mat-stepper>
+</form>
