@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -17,7 +17,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatSliderModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   exports:[
     ReactiveFormsModule,
@@ -25,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatSliderModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

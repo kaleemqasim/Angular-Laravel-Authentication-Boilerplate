@@ -89,4 +89,26 @@ class AuthController extends Controller
         ]);
     }
 
+    public function verifyToken(Request $request) {
+        $response = auth('api')->check();
+        $responseCode = 200;
+        \JWTAuth::parseToken()->invalidate();
+        return true;
+        if(!$response) {
+            try {
+               if (!(\JWTAuth::parseToken()->authenticate())) {
+                $response = 0;
+               }
+            } catch (\JWTAuth\Exceptions\TokenExpiredException $e) {
+               $response = -1;
+            } catch (\JWTAuth\Exceptions\TokenInvalidException $e) {
+               $response = -2;
+            } catch (\JWTAuth\Exceptions\JWTException $e) {
+               $response = -3;
+            }
+        } else {
+            $response = (int) $response;
+        }
+        return response()->json($response, $responseCode);
+    }
 }

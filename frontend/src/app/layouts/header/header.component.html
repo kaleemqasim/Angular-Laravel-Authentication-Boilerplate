@@ -1,9 +1,14 @@
 <nav class="navbar navbar-light bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand text-white">Task App</a>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="d-flex text-white" *ngIf="userLoggedIn; else loggedOut">
+        Welcome back, {{user.name}}
+        <button (click)="logoutUser()" class="offset-md-1 btn btn-primary btn-sm">Logout</button>
+      </div>
+      
+      <ng-template class="d-flex text-white" #loggedOut>
+        <a routerLink="/auth/login">Login</a>
+        <a routerLink="/auth/register">Register</a>
+      </ng-template>
     </div>
   </nav>

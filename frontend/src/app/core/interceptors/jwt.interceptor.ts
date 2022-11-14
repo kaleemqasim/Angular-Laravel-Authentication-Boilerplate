@@ -15,11 +15,9 @@ import { environment } from 'src/environments/environment';
       request: HttpRequest<unknown>,
       next: HttpHandler,
     ): Observable<HttpEvent<unknown>> {
-      alert('asd')
       const isLoggedIn = localStorage.getItem('logged_in');
       const token = localStorage.getItem('jwt_token');
       const isApiUrl = request.url.startsWith(environment.apiUrl);
-  
       if (token && isLoggedIn && isApiUrl) {
         request = request.clone({
           setHeaders: {

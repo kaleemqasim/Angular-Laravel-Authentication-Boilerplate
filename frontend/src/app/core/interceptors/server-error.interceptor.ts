@@ -18,6 +18,9 @@ import {
       return next.handle(request).pipe(
         catchError((error: HttpErrorResponse) => {
           if ([401, 403].includes(error.status)) {
+            localStorage.removeItem('logged_in');
+            localStorage.removeItem('jwt_token');
+            localStorage.removeItem('user');
             this._router.navigateByUrl('/auth/login');
             return throwError(() => error);
           } else {
