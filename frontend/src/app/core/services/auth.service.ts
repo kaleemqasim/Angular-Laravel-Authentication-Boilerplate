@@ -28,8 +28,7 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    let userLogged = localStorage.getItem('logged_in') ? true : false;
-    return userLogged
+    return localStorage.getItem('logged_in') ? true : false;
   }
 
   get getUser() {
