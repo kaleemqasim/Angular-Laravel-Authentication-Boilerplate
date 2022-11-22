@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
     if(!httpHelpers.emptyObject(this.user)){
       this.userLoggedIn = true;
     }
-    console.log(typeof this)
-    console.log('user', this.user)
   }
 
   logoutUser() {

@@ -2,6 +2,8 @@
     <div class="container-fluid">
       <a class="navbar-brand text-white">Task App</a>
       <div class="d-flex text-white" *ngIf="userLoggedIn; else loggedOut">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a routerLink="/about">About</a>
         Welcome back, {{user.name}}
         <button (click)="logoutUser()" class="offset-md-1 btn btn-primary btn-sm">Logout</button>
       </div>

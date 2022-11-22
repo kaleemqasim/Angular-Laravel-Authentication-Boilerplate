@@ -90,10 +90,9 @@ class AuthController extends Controller
     }
 
     public function verifyToken(Request $request) {
-        $response = auth('api')->check();
+        $response = auth()->check();
         $responseCode = 200;
-        \JWTAuth::parseToken()->invalidate();
-        return true;
+        // \JWTAuth::parseToken()->invalidate();
         if(!$response) {
             try {
                if (!(\JWTAuth::parseToken()->authenticate())) {
